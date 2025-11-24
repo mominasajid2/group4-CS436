@@ -22,9 +22,10 @@ def draw_feature_matches(img1, kp1, img2, kp2, matches, max_draw):
     draw = cv2.drawMatches(img1, kp1, img2, kp2, matches[:max_draw], None, flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
     return draw
 
-def match_pairs(image_paths):
-    img_pairs_to_match = [(image_paths[i], image_paths[i+1]) for i in range(4)]
+def match_pairs(image_paths, num=4):
+    img_pairs_to_match = [(image_paths[i], image_paths[i+1]) for i in range(num)]
     match_results = []
+    matched_pts_list = []
     for path1, path2 in img_pairs_to_match:
         img1_color, img1_gray = load_image(path1)
         img2_color, img2_gray = load_image(path2)
@@ -33,4 +34,8 @@ def match_pairs(image_paths):
         matches = match_features(d1, d2, norm, ratio=0.75)
         matched_vis = draw_feature_matches(img1_color, k1, img2_color, k2, matches, max_draw=60)
         match_results.append(matched_vis)
-    return match_results
+        pts1 = np.float32([k1[m.queryIdx].pt for m in matches])
+        pts2 = np.float32([k2[m.trainIdx].pt for m in matches])
+        matched_pts_list.append((pts1, pts2))
+
+    return match_results, matched_pts_list
