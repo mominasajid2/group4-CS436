@@ -1,5 +1,6 @@
 # CS 436 Project
 ## Folder Structure
+```
 project_root/
 │
 ├── data/
@@ -14,3 +15,4 @@ project_root/
 ├── Week2.ipynb 
 ├── Week3.ipynb 
 └── README.md 
+```
