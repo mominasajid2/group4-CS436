@@ -19,7 +19,11 @@ project_root/
 ├── .gitignore
 └── README.md
 ```
-To Access Virtual Tour:
+## Accessing the Virtual Tour
+
+To run the interactive virtual tour locally, follow these steps:
+
+```bash
 cd final_viewer
 npm install
 npm run dev
