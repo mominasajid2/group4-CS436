@@ -19,3 +19,7 @@ project_root/
 ├── .gitignore
 └── README.md
 ```
+To Access Virtual Tour:
+cd final_viewer
+npm install
+npm run dev
