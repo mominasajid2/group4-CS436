@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Virtual Tour Viewer</title>
+
+    <!-- 🧠 STYLES -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        font-family: sans-serif;
+      }
+
+      /* Container for the Three.js canvas */
+      #three-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+      }
+
+      /* Layered background images for crossfade */
+      .fade-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 2s ease-in-out;
+        z-index: 1;
+      }
+
+      #imageA {
+        opacity: 1;
+      }
+
+      #imageB {
+        opacity: 0;
+      }
+
+      /* Optional overlay for debugging / camera info */
+      #overlay {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        color: #00ff99;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-size: 0.9em;
+        z-index: 3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Three.js container -->
+    <div id="three-container"></div>
+
+    <!-- Background image layers for cross-fade -->
+    <img id="imageA" class="fade-layer" />
+    <img id="imageB" class="fade-layer" />
+
+    <!-- Optional debug overlay -->
+    <div id="overlay">Virtual Tour Loaded</div>
+
+    <!-- Script reference -->
+    <script type="module" src="script_3.js"></script>
+  </body>
+</html>
+
